@@ -1,0 +1,26 @@
+{
+  "name": "my-discord-bot",
+  "version": "1.0.0",
+  "description": "My personal project to create a discord bot using node.js and javascript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/bot.js",
+    "dev": "nodemon ./src/bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AcedYu/my-discord-bot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AcedYu/my-discord-bot/issues"
+  },
+  "homepage": "https://github.com/AcedYu/my-discord-bot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "dotenv": "^8.2.0"
+  }
+}
