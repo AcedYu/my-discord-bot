@@ -2,6 +2,7 @@
 require('dotenv').config();
 const fetch = require("node-fetch");
 const Discord = require('discord.js');
+const discordTTS = require("discord-tts");
 
 // define client
 const client = new Discord.Client();
@@ -78,8 +79,15 @@ var renderWeatherEmbed = (message, data) => {
   message.channel.send(newEmbed);
 }
 
-var cmdSay = (message) => {
-  message.channel.send("My voice hasn't been implemented yet, will be added in a future patch. :speaking_head:");
+var cmdSay = (message, ...args) => {
+  var botmessage = args.join(' ');
+  const broadcast = client.voice.createBroadcast();
+  var chID = message.member.voice.channelID;
+  var channel = client.channels.cache.get(chID);
+  channel.join().then(connection => {
+    broadcast.play(discordTTS.getVoiceStream(botmessage));
+    const dispatcher = connection.play(broadcast);
+  });
 }
 
 // Bot invoke log in
