@@ -53,7 +53,7 @@ var cmdRetard = (message) => message.channel.send("I don't have a Kevenny friend
 // Get Weather function
 var cmdWeather = (message, ...city) => {
   city = city.join(' ');
-  var weatherApi = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=caf23bfda5d554d1a104091b1f51e063&units=imperial`;
+  var weatherApi = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.WEATHER_API_KEY}&units=imperial`;
 
   // fetch function
   fetch(weatherApi)
