@@ -2,7 +2,7 @@
   "name": "my-discord-bot",
   "version": "1.0.0",
   "description": "My personal project to create a discord bot using node.js and javascript.",
-  "main": "index.js",
+  "main": "/src/bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./src/bot.js",
