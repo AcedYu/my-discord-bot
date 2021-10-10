@@ -75,13 +75,13 @@ const renderWeatherEmbed = (message, data) => {
 }
 
 const cmdSay = (message, ...args) => {
-  var botmessage = args.join(' ');
-  const broadcast = client.voice.createBroadcast();
-  var chID = message.member.voice.channelID;
-  var channel = client.channels.cache.get(chID);
+  let botmessage = args.join(' ');
+  let broadcast = client.voice.createBroadcast();
+  let chID = message.member.voice.channelID;
+  let channel = client.channels.cache.get(chID);
   channel.join().then(connection => {
     broadcast.play(discordTTS.getVoiceStream(botmessage));
-    const dispatcher = connection.play(broadcast);
+    let dispatcher = connection.play(broadcast);
   });
 }
 
