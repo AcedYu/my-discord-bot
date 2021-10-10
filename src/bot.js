@@ -12,6 +12,7 @@ const PREFIX = "_";
 // Command List object defining available commands.
 const commandList = {
   hello: (message) => cmdHello(message),
+  type: (message, args) => cmdType(message, ...args),
   weather: (message, city) => cmdWeather(message, ...city),
   say: (message, args) => cmdSay(message, ...args)
 };
@@ -44,6 +45,7 @@ client.on('message', (message) => {
 
 // Command functions
 const cmdHello = (message) => message.channel.send("Hello there, I am Phones's Bot. Nice to meet you.");
+const cmdType = (message, ...args) => message.channel.send(args.join(' '));
 
 // Get Weather function
 const cmdWeather = (message, ...city) => {
@@ -74,11 +76,11 @@ const renderWeatherEmbed = (message, data) => {
   message.channel.send(newEmbed);
 }
 
-const cmdSay = (message, ...args) => {
+const cmdSay = async (message, ...args) => {
   let botmessage = args.join(' ');
-  let broadcast = client.voice.createBroadcast();
-  let chID = message.member.voice.channelID;
-  let channel = client.channels.cache.get(chID);
+  let broadcast = await client.voice.createBroadcast();
+  let chID = await message.member.voice.channelID;
+  let channel = await client.channels.cache.get(chID);
   channel.join().then(connection => {
     broadcast.play(discordTTS.getVoiceStream(botmessage));
     let dispatcher = connection.play(broadcast);
