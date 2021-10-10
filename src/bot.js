@@ -43,9 +43,10 @@ client.on('message', (message) => {
 });
 
 // Command functions
+const cmdHello = (message) => message.channel.send("Hello there, I am Phones's Bot. Nice to meet you.");
 
 // Get Weather function
-var cmdWeather = (message, ...city) => {
+const cmdWeather = (message, ...city) => {
   city = city.join(' ');
   var weatherApi = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.WEATHER_API_KEY}&units=imperial`;
 
@@ -64,7 +65,7 @@ var cmdWeather = (message, ...city) => {
 }
 
 // function renderWeatherEmbed
-var renderWeatherEmbed = (message, data) => {
+const renderWeatherEmbed = (message, data) => {
   var newEmbed = new Discord.MessageEmbed()
   .setTitle(`Here is the current weather in ${data.name}`)
   .setImage(`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`)
@@ -73,7 +74,7 @@ var renderWeatherEmbed = (message, data) => {
   message.channel.send(newEmbed);
 }
 
-var cmdSay = (message, ...args) => {
+const cmdSay = (message, ...args) => {
   var botmessage = args.join(' ');
   const broadcast = client.voice.createBroadcast();
   var chID = message.member.voice.channelID;
