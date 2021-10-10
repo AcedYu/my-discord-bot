@@ -6,15 +6,12 @@ const discordTTS = require("discord-tts");
 
 // define client
 const client = new Discord.Client();
-// Command prefix will be +
+// Command prefix will be _
 const PREFIX = "_";
 
 // Command List object defining available commands.
 const commandList = {
   hello: (message) => cmdHello(message),
-  kevenny: (message) => cmdKevenny(message),
-  knee: (message) => cmdKevenny(message),
-  retard: (message) => cmdRetard(message),
   weather: (message, city) => cmdWeather(message, ...city),
   say: (message, args) => cmdSay(message, ...args)
 };
@@ -46,9 +43,6 @@ client.on('message', (message) => {
 });
 
 // Command functions
-var cmdHello = (message) => message.channel.send("Hello there, I am Phones's Bot. Nice to meet you.");
-var cmdKevenny = (message) => message.channel.send("Who? :smirk:");
-var cmdRetard = (message) => message.channel.send("I don't have a Kevenny friendly command like that :rage:");
 
 // Get Weather function
 var cmdWeather = (message, ...city) => {
