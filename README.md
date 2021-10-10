@@ -5,12 +5,13 @@ It contains notable features such as:
 - bot commands using the prefix "_"
 - creation of a weather embed that displays weather information based on the city provided using the "_weather" command
 - text to speech using "_say" command
+- view commands with the "_help" command
 
 ![Image](/assets/weatherdemo.png)
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+This bot is already deployed, but these instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
@@ -36,6 +37,7 @@ npm start
 * [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 * [Node.js](https://nodejs.org/en/)
 * [Discord.js](https://discord.js.org/#/)
+* [Discord-tts](https://www.npmjs.com/package/discord-tts)
 
 ## Authors
 AcedYu

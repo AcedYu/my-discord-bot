@@ -13,6 +13,7 @@ const PREFIX = "_";
 const commandList = {
   hello: (message) => cmdHello(message),
   type: (message, args) => cmdType(message, ...args),
+  help: (message) => cmdHelp(message),
   weather: (message, city) => cmdWeather(message, ...city),
   say: (message, args) => cmdSay(message, ...args)
 };
@@ -46,6 +47,15 @@ client.on('message', (message) => {
 // Command functions
 const cmdHello = (message) => message.channel.send("Hello there, I am Phones's Bot. Nice to meet you.");
 const cmdType = (message, ...args) => message.channel.send(args.join(' '));
+const cmdHelp = (message) => {
+  let newEmbed = new Discord.MessageEmbed()
+  .setTitle("Here are the current commands that I have (prefix: _ )")
+  .setDescription(`hello - types out a greeting message
+  type (message) - types out (message)
+  weather (city) - gets current weather data for (city)
+  say (message) - bot enters the channel and uses text to speech to say (message)`);
+  message.channel.send(newEmbed);
+}
 
 // Get Weather function
 const cmdWeather = (message, ...city) => {
@@ -68,7 +78,7 @@ const cmdWeather = (message, ...city) => {
 
 // function renderWeatherEmbed
 const renderWeatherEmbed = (message, data) => {
-  var newEmbed = new Discord.MessageEmbed()
+  let newEmbed = new Discord.MessageEmbed()
   .setTitle(`Here is the current weather in ${data.name}`)
   .setImage(`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`)
   .setDescription(`Temperature: ${data.main.temp} °F\nHumidity: ${data.main.humidity}%\nWind Speed: ${data.wind.speed} MPH`);
